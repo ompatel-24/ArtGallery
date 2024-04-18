@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            color: #fff;
+            background-color: #5A6268;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Login</h2>
+    <form id="loginForm" action="/login" method="post">
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"/>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"/>
+        </div>
+        <div>
+            <input type="submit" value="Log In"/>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        var username = document.querySelector('input[name="username"]').value;
+        var password = document.querySelector('input[name="password"]').value;
+
+        fetch('/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({username: username, password: password}),
+        })
+                .then(response => {
+                    if (response.status === 401) {
+                        alert('Incorrect password');
+                    } else if (response.ok) {
+                        if (username === 'admin')
+                            window.location.href = 'http://localhost:3000/art_ADMIN';
+                        else {
+                            window.location.href = 'http://localhost:3000/art';
+                        }
+                    } else {
+                        return response.text();
+                    }
+                })
+                .then(data => {
+                    if (data) {
+                        console.log(data);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+    });
+</script>
+
+</body>
+</html>

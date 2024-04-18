@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <button onclick="window.location.href='/art'">Home</button>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .art-object {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            background-color: #fff;
+        }
+        .art-object img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        h1, h2 {
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+<h1>{{title}}</h1>
+<div class="grid">
+    {{#each favourites}}
+        <div class="art-object">
+            <img src="{{this.primaryImage}}" alt="{{this.title}}">
+            <h2>{{this.title}}</h2>
+            <p>{{this.artistDisplayName}}</p>
+        </div>
+    {{/each}}
+</div>
+</body>
+</html>

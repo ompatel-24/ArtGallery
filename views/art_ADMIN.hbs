@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{title}}</title>
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        color: #333;
+        background-color: #f4f4f4;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .user-object {
+        text-align: center;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        background-color: #fff;
+    }
+    h1, h2 {
+        color: #444;
+    }
+    button {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #333;
+        color: #fff;
+        cursor: pointer;
+        margin: 10px;
+    }
+    button:hover {
+        background-color: #444;
+    }
+    img {
+        align-content: center;
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+    }
+</style>
+<body>
+<button onclick="window.location.href='/search'">Go to Search Page</button>
+<button onclick="window.location.href='/favourites'">Go to Favourites Page</button>
+<button onclick="window.location.href='/users'">Go to Users Page (Admin Only)</button>
+<button onclick="window.location.href='/login'">Go to Login</button>
+<h1>{{title}}</h1>
+<img src="https://images.fineartamerica.com/images-medium-large-5/herons-on-the-lake-original-modern-oil-painting-with-birds-handmade-natalya-zhdanova.jpg" alt="Herons on the Lake">
+</body>
+</html>

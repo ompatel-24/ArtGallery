@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .user-object {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            background-color: #fff;
+        }
+        h1, h2 {
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+<button onclick="window.location.href='/art_ADMIN'">Home</button>
+<h1>{{title}}</h1>
+<div class="grid">
+    {{#each users}}
+        <div class="user-object">
+            <h2>Username: {{this.username}}</h2>
+            <p>Password: {{this.password}}</p>
+        </div>
+    {{/each}}
+</div>
+</body>
+</html>
